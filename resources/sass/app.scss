@@ -1,0 +1,23 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    background-color: #262525;
+    color: white;
+
+    .media {
+        background-color: transparent;
+        padding: 1em 0;
+        border-bottom: 1px solid gray;
+
+        .media-body > p {
+            color: #767676;
+        }
+    }
+}
