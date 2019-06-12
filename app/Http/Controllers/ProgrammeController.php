@@ -3,17 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\SearchService;
 
 class ProgrammeController extends Controller
 {
     /**
-     * Show the profile for the given user.
+     * Show the programme index page
      *
-     * @param  int  $id
+     * @param  SearchService  $search
+     * @param  Request  $request
      * @return View
      */
-    public function index()
+    public function index(SearchService $search, Request $request)
     {
-        return view('programme.index', ['page_id' => 'app']);
+        $term = $request->input('search', '');
+        $appId = 'staticApp';
+        $isSPA = empty($term);
+        $data = [];
+
+        if ($isSPA) {
+            $appId = 'app';
+        } else {
+            $data['results'] = $search->filter($term);
+        }
+
+        $data['page_id'] = $appId;
+        $data['is_spa'] = $isSPA;
+
+        return view('programme.index', $data);
     }
 }

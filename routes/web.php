@@ -11,14 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/programme', 'ProgrammeController@index')->name('programme');
-
-Route::get('/search', 'ProgrammeController@search')->name('search');
+Route::get('/', 'ProgrammeController@index')->name('programme');

@@ -10661,3 +10661,7 @@ body .media .media-body > p {
   color: #767676;
 }
 
+body .media img {
+  max-width: 200px;
+}
+

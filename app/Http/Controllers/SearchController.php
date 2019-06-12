@@ -7,8 +7,16 @@ use App\Services\SearchService;
 
 class SearchController extends Controller
 {
-    public function index(SearchService $search)
+    /**
+     * API list programmes with filter
+     *
+     * @param  SearchService  $search
+     * @param  Request  $request
+     * @return View
+     */
+    public function index(SearchService $search, Request $request)
     {
-        return ['results' => $search->filter()];
+        $term = $request->input('search', '');
+        return ['results' => $search->filter($term)];
     }
 }
